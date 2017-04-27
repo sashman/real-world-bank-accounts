@@ -1,0 +1,107 @@
+namespace :bank_data do
+  desc "scrape bank account data and print to terminal"
+  task scrape: :environment do
+
+    primaryloginUrl = 'https://online.bankofscotland.co.uk/personal/primarylogin'
+    entermemorableinformationUrl = 'https://secure.bankofscotland.co.uk/personal/a/logon/entermemorableinformation.jsp'
+
+
+  end
+
+end
+
+# https://secure.bankofscotland.co.uk/personal/a/account_details_ress/OWEGXWFPRK2YWAW443UQPEXJ53YDIR5RRYVONLAEDN75P6TZOSMQ/WCCLTC6CDXY6UTQDQSBIAVWTD3VNBKWFCYB3YVA/62LCDBKEY6GJW//YX2GMPA4NAXRGG4SE42RPD3YPHSPN4GAENHZNVTNV44MYLJLX75Q/#
+
+# First Stage
+#
+# Response
+# HTTP/1.1 302 Moved Temporarily
+# X-Powered-By: Servlet/3.0
+# X-HP-CAM-COLOR: V=1;ServerAddr=rCluUvly7N4+ncwVCkq5IA==;GUID=1|Zz_ACNFUUJ17s6bA5nF1X958S0N2Z5fVJp2S4hrrkkzBTrwt5ExNd9eOdtaRE8iCnURUO3aZomDpPB5m-DQMrsKg0aoJWbG3GkS81XqGSa09poNol7PBStKaNcqmogOGgVIZNDvJ4Qf3MpuAeiZ5YA..|L3BlcnNvbmFsL3ByaW1hcnlsb2dpbg..
+# Location: https://secure.bankofscotland.co.uk/personal/login?mobile=false
+# Content-Language: en-US
+# Content-Length: 0
+# Expires: Thu, 01 Dec 1994 16:00:00 GMT
+# Cache-Control: no-cache="set-cookie, set-cookie2"
+# X-Frame-Options: SAMEORIGIN
+# Date: Thu, 27 Apr 2017 12:26:07 GMT
+# Connection: keep-alive
+# Set-Cookie: IBCOOKIE03=IBCOOKIE03VALUERANDNXZdsMsjXG5exkw0N7YxB5ypdolZzGab|EyIPqPKaoyLjrFi9YL-lEBT1917;HttpOnly; Path=/personal; Domain=.bankofscotland.co.uk; Secure
+# Set-Cookie: TLCookie=RAND86bR7IaKvxq8oUbruwuTyitXDSCk6D8q_27042017124607; Path=/; Domain=.bankofscotland.co.uk; Secure
+# Set-Cookie: redirect=X5lxHEzdZNCsiEDkaSUgYMipu/BDGztA9k1NCHIViwuqvFeyJFHxiCDcve7s1ciUW5gxN2MAo+YN2wBHabPoTwQ1sFS9Ak1TZoHfzLPtatjV4xw/kdoSqXhY3va3EAL4sKz09bxS55nBqQv056Qa7Z1BLKMA6+jXlJlo7DS26bK1xpF3l2tcbjYrhLzZdsTpKOnrnzxwNBGIzEukPFcAE/j1nZpWb+ZKPu5ZkNFhzP0COHJcImYddrZWYTLf6XTV+wcNRlRWLoFCzRiMaLZSZpKnGMwTTy5cwZhAWPRA5Ut48OTUvWV24HZU1HQC93s4YEFn1AQ/E/NeP0g8/9HooQ==bzxe/kmeqZY3e6CypjK58w7H7sT9RXudWDfYH1tDJ6DbawuaQivqxUgbDtB8MLhN;HttpOnly; Path=/; Domain=.bankofscotland.co.uk; Secure
+# Set-Cookie: prefshash=; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; Secure;
+# Set-Cookie: IBCOOKIE05=103dc4b71fb1b1cfbf98bd3d63de0fa798dbda8d5d6a3469b0ee7afc259599d7f2fd9be4dd5621b9324284e3c6072544jNlZPeyq/PqEOLcGtHjkwUk3clHYzbdzjGrLLZuNBgzs338BJIryh5TMO1/rbX9/;Path=/;Domain=.bankofscotland.co.uk;Version=1;Secure;Httponly
+#
+# Request
+# Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+# Accept-Encoding:gzip, deflate, br
+# Accept-Language:en-US,en;q=0.8,ru;q=0.6
+# Cache-Control:no-cache
+# Connection:keep-alive
+# Content-Length:242
+# Content-Type:application/x-www-form-urlencoded
+# Cookie:IBCOOKIE03=IBCOOKIE03VALUERANDNXZdsMsjXG5exkw0N7YxB5ypdolZzGab; ___r20414=0.121215598588; _wt.mode-305002=WT3g4hu3Cmx3dE~; _wt.user-305002=WT3LYaM2kRueGFWrID0ScMGhmizVYUYGRm78OxvfGRwk5z4U62MyL3-SW3MaA1TkDf1eGGE76zEl88EwxzNLhWKdLDz73HK4ejWFWC3lw~~; IBCOOKIE08=!AJ2dDhhXSuZlqqJakVO/IemtK7Yp4fz+8dqbGPrO1GHnHCkDQ9SHaPqS; IBCOOKIE02=5746a8bbbd1844f29f4d717ba46950bebb1673371ee09519ca2bc805a73246e01f12a8050915a9d0590c70b30b34395db2BigLCG7LApHQ3cmKeLV44AAuszLIC3z53zS5REd020J1uZ0i8mJwQqyGX621UphjUoH6eJ35spjS9A0kSjZA==; LSESSIONID=jLd1pqYZ6okkdCyGLx0g0T0No%2FmSpX3aU0CzEXavFtPX08UvNMN04sA%3D; ak_bmsc=D6FC48D7D4D692A906E61AC06A5B3E98686747549A5E0000E8DE015903DBCF57~pl2w1rsohs9D1ktF8gv8Oi7GeD1XZBRwzl5c2eb9GsClN3sLShatCK0lyqYQQes0Q7Y3mRdDoFZHRVGDaMIC8THVpMkx1HHHnqp6xwyQ3w4aTGQkqm7WiMBIylVPruXbaPFzRb+caufR6Hnhswl7jF2hzLGtyB0BmdggHpgLR24cP/KKqGUWTgVC9G4itpJCd2x2LwIiCvVd0a3q+1co2Is4pO0PMuZfT0l0BTvgkJbU4=; WT_FPC=id=c2c75801-9e0d-438d-bb5a-51b920682bf6:lv=1493292305166:ss=1493291223694; utag_main=v_id:01541ab91fd0001839f717b0782f0506d002006500bd0$_sn:37$_ss:0$_st:1493297705426$_pn:18%3Bexp-session$ses_id:1493294822920%3Bexp-session$EPLI:%7B%7D%3Bexp-1493299499441; bmuid=3EDA850C-404B-45BF-9246-BAF93610FEFD; bcbd=1493295906376_2a8101dc-c17b-4562-b9c1-2bfcd66a0d24; TLCookie=RAND86bR7IaKvxq8oUbruwuTyitXDSCk6D8q_27042017124506; brbk0=547; prefshash=Version-252865%2Cm2wwtm4t7W88MBPjKNMwqA%3D%3DmpgJMJ5jPFcVc32YIP%2F7716cLuwi%2BVlwfQV8meqmiS8LRde%2FVrwFrbCzvGpA7nXd%2BOVjLG4vP9AbfdzSbYLqHSX0ebqztlPRMMjYq7qhWvemNAqVnA5zvSH55S6%2BaGVkdRWyM7h4IoO5CbZHqf%2BDM4GF6snkII77c5ILsBD5z68%3D; bc_sessionId=858b1289-0039-4f2a-9fd6-484be69f475f; bc_sessionIdPerSession=858b1289-0039-4f2a-9fd6-484be69f475f; bc_historyCsId=; ___so20414=eyJsc2giOjE5MTYwMzE0NjQsInNkIjpudWxsLCJlIjp7Im4iOjMsImEiOlt7IjE4Ijp0cnVlLCJzciI6Imh0dHBzOi8vb25saW5lLmJhbmtvZnNjb3RsYW5kLmNvLnVrL2Zhdmljb24uaWNvIn0sIjE4Il0sInJpZCI6MC45MTUwMjk4MDQyOTI0MjcyfSwibiI6NSwiciI6W10sInUiOiJPREV3TURkak9EUTJabVkxTkdNNVlXRTBNbUUyWldKaFpHWTVOR00wTURrMFpUQTBOMk00T0dJMk5tTmhZbUV3WldZMk5qRXdNamhtTmpsa09EWXlaamM0TWpOaVpXWmlaRE0zWldGbE1UTm1NREZpT1RabU5UVTFNMlUwTmpReE1HWXhZV1JsWXprMll6UTVaVFptTkdJeFl6TmlaVGMzTURoak1tWTFZalF3TlRka09UVXlZMkUzTTJFeU1HVTJZV0k0TUdVMFpURXpPVGMwT1dWaU9HUXdNR0ZpWW1abVpURXlPR1JpTW1WaFltVTVNVEl4Wm1FM1lXSmhObVk0T0RCaU1qQXpNREF4WkdJMk1ESm1ZakV6T0dFM01tSXlabUZqWTJGak5tSXdOV0UwTW1JM1lUWTRPR05qTXpCa09HUTNNbVEzTWpjMFl6WmxOVGRqWmpGbU1UaGlOelJrWVRGaFpqazFaVFF5TWpobU1UVXlaalEwWldVeE1UTmtZVEl4TjJKak1HSmxaVEJpWkRRd04yTmtNVGxtWlRJMk5HTmxNamt6WVRJNE56azFNR1EzTmprME9HUmtOek5pTW1Vek5UWmxORFppT1dFd056ZzVOakUzT1dFeE1qSmtaakExWTJWaE1XTXdaREExWkdGaE56Sm1PRFEyTnpZME5HRmhaR1ZrTnpjMk5UUTNZVFkxTkRsaFlqY3dPVE16TnpSbVptRTRZbVptWkRFNFl6WmpZVE5pTmprMk5qQXpaalpsT1dWaFl6ZGxPVEEyTmpNMk1EZGhZVFE0T1RoaU0yWXdObVJrTW1NeFpHRm1PV001WXpSbU1tTmtOams0WmpaaVlXWTVNalJqTnpWak1qWXpNemxqWVdVMVlXUTJOV0V5Tmpjd01tUjhNWHhtY20xTWIyZHBiZz09IiwiaCI6Ijk1Yzk4Y2IzMmU0M2M1NDIzZTg2ZjllYjVjNWIxNmI2ZjIzNzRmNjhmMGI3YzExMDE0ZGQxODE3OTY2ZGEzNGEifQ%3D%3D; ADRUM=s=1493295967558&r=https%3A%2F%2Fonline.bankofscotland.co.uk%2Fpersonal%2Flogon%2Flogin.jsp%3F0
+# Host:online.bankofscotland.co.uk
+# Origin:https://online.bankofscotland.co.uk
+# Pragma:no-cache
+# Referer:https://online.bankofscotland.co.uk/personal/logon/login.jsp
+# Upgrade-Insecure-Requests:1
+# User-Agent:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36
+#
+# frmLogin:strCustomerLogin_userID:oleksandrstasyk
+# frmLogin:strCustomerLogin_pwd:******************
+# frmLogin:frmLogin
+# submitToken:3839736
+# target:
+# testenv:
+# hdn_mobile:
+# dclinkjourid:nvUF1AWdIRoYVWxVqW2fosJ5731
+# hasJS:true
+# frmLogin:btnLogin1:Continue
+#
+# Second Stage
+# Response
+# Cache-Control:no-cache="set-cookie, set-cookie2"
+# Connection:keep-alive
+# Content-Language:en-US
+# Content-Length:0
+# Date:Thu, 27 Apr 2017 12:28:04 GMT
+# Expires:Thu, 01 Dec 1994 16:00:00 GMT
+# Location:https://secure.bankofscotland.co.uk/personal/a/account_overview_personal/YX2GMPA4NAXRGG4SE42RPD3YPHSPN4GAENHZNVTNV44MYLJLX75Q/
+# Set-Cookie:TLCookie=RAND86bR7IaKvxq8oUbruwuTyitXDSCk6D8q_27042017123804; Path=/; Domain=.bankofscotland.co.uk; Secure
+# Set-Cookie:IBCOOKIE07=; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; Secure;
+# Set-Cookie:IBCOOKIE09=da65ae8f560a965e3c72b33369b1170772c128c09b5ae8c93d003930282f0affb262b5528fda7e71f52c891a21359180vPS8wLiccHVcYJ5MhEtftGwPFBZEgmJ9ZVtr/7f6KY2P0NT6Zem4he5E32Wn+ltS;Path=/;Domain=secure.bankofscotland.co.uk;Version=1;Httponly;Secure
+# Set-Cookie:IBSESSION=453947fd6e01d0bde38a5087a854e50d583e3aa6a32f9523e74f85ef875eb9ba4c27bdcb470e86d903f762493c499853nL6JbIAneLZYWeg7+rEKc8NKGtN/rUU6YVvB2EJZ39gXtUDGVKZ0uEg1EVg2zTQ5ZRK4b/BXgkPdplHnZTlfvzm2IQLWN4gAqC8y3EwBZlQEiElKzyLp64gLPLjjME8am4xv9cXTedcLKEz+k8OGjN2hgSkNq6S1pE9FXLw/dHcl1QsshMNp1nJem+/Df13LUd+Y9q4VxQ/2dYL0rfNkpBeU0YkCo6SsKU+6lmUxOLlUcUwmSXZCUZyPRhOrPmph0euPQ3mhrVQ8QfdO0a0qnbEjOXh9taHxs5jyd15Bx1D3zmbdVbFwBuJqBJSWCeiJPZzbfGBzcaguJbOC8UGnHHCYoyfXMSp9J488oFTm8RiHSpWEdRnpzIv1DoaqKYualuP4Us+7FIxrP0cHirS4GWUm5DmakTozQ3KBn7KHJ7Kyq8IjWlv5SajpaRGToN5zkDVMwvvXIzJUG1vEVoNbwjG65NYY8fjqWhZR4smbNIjWtZfeHw3bAW4d5ZuRAI83rGjx0YAdQoEUHPUxdoUZ/9enojV+gYRHmDlkMSmHcmxTZCSZaFEFZb4/BkujgrTsgTOBFuhck0jN2caa1mp1rmOcIe8k7VEeQTm23lahsgKdrd6ffw7LHENqLIvjOALY1S59Nbpwuc1cbYMJt4mqbtmI0wQG/aA0GO8ukOVBsowpYoBFoRxamYETP+nEEU8ksqC8th3W8FG0Mr9pBnBdj87yxJsSN0f2xLoNQr5E8U7Op+8I6pMKSsfIC624075co4iQbk48vkGL+EF5CVmdyw1I5kiMmf/lyEdhCc7VVMnsKpEz8RJTRjO8ltgCLdXz38i2kKRq6KOQwvXvhhHiKYGzERxsfVBeXddZuBtDl1JxiPbdYudJr60TMa/lGHaoMDDOgWIokBM0pjfmMH0ad0bmAerwXE9of6yKTN5fjRuvj+qj7Pgg0urwDeV23YQRrZMWKu+R87HUkiixB/3R5KeKKG4kFWHAbZtRiu+caBy8K6VerdxmXM8jDm3aYQt2pwVeJHWlrGjaT9g2jeH5+9zBMD4rrcotZQp8PmIZp/Hu7rSupQ3bSAdoleIYjeKoVOAmswPR97M9V/yq4EHKq+qwwYkSJlqnluLkpB0orE34NlTbxVyAIfj8DjUk3Yw98rkdLr1GxULP3NOwnRD64cMMEkb0G+Lw2Ml/b5avn6LU/5EUuo522Jv93Pf6x7BexzgpIgiRbhkuibs7jEONHjv0SvBQyNeFLPmhjzZtqFsJTWjzFnj3OUNp8WnHN6FPeRHxPWBlm/5lgFmopHfAFdTGe9wU/ukyXyTuByBQ9Yl5u4Fid79a/kEBiTYCpJX3/00rHtF0JF0yfeCKgvg7Mtbbh12d0uj6EofAzEpTiKbe9MnYpYtylfuRbF3WtGe9;Path=/;Domain=secure.bankofscotland.co.uk;Version=1;Secure;Httponly
+# Set-Cookie:prefshash=; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; Secure;
+# X-Frame-Options:SAMEORIGIN
+# X-HP-CAM-COLOR:V=1;ServerAddr=hxuFOZsy8e615hzdkx2ULg==;GUID=1|IRSCWVbxb-zgoX9jWgbvVczLKe0UsXLfGNhpZpA0P0CzWsucwZ7rYCnQZ3Kv_k7n0t1_WszdwVqcr7lrccNFEj8XR-zy1SDu5_Gwq-x_xK5sgouWixQGpYzfP_rt3J1A6IpmxtzKoFoc_7fxESHxFA..|L3BlcnNvbmFsL2EvKi8q
+# X-Powered-By:JSF/1.2
+# X-Powered-By:JSF/1.2
+# X-Powered-By:JSF/1.2
+# X-Powered-By:JSF/1.2
+# X-Powered-By:Servlet/3.0
+# X-UA-Compatible:IE=edge
+#
+# Request
+# Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+# Accept-Encoding:gzip, deflate, br
+# Accept-Language:en-US,en;q=0.8,ru;q=0.6
+# Cache-Control:no-cache
+# Connection:keep-alive
+# Content-Length:385
+# Content-Type:application/x-www-form-urlencoded
+# Cookie:IBCOOKIE03=SECUREIBCOOKIE03VALUERANDNXZdsMsjXG5exkw0N7YxB5ypdolZzGab|EyIPqPKaoyLjrFi9YL-lEBT1917; ___r20414=0.121215598588; _wt.mode-305002=WT3g4hu3Cmx3dE~; _wt.user-305002=WT3LYaM2kRueGFWrID0ScMGhmizVYUYGRm78OxvfGRwk5z4U62MyL3-SW3MaA1TkDf1eGGE76zEl88EwxzNLhWKdLDz73HK4ejWFWC3lw~~; IBCOOKIE02=5746a8bbbd1844f29f4d717ba46950bebb1673371ee09519ca2bc805a73246e01f12a8050915a9d0590c70b30b34395db2BigLCG7LApHQ3cmKeLV44AAuszLIC3z53zS5REd020J1uZ0i8mJwQqyGX621UphjUoH6eJ35spjS9A0kSjZA==; IBCOOKIE08=!2R4Loe3sjpGLPNuYyQdP0OHCEU2HkmKfNzjPmMkR3M3tnRSHyOZSw9TE; IBSESSION=c6a5c812d694b947dd1f3f4aa1fa71b29783d61bc7e56300f0f980b40ad6c8919e46b001684ec0f2ed0701772566f5f8+wVAcN3euyP4a2z3BmIMTeROURUqNdkZS3m1WROnYty/HVltQzxfh7a/CyWJNEmDwr/P5XOcU5TxDmCvK679JMEj5Ge6kdSRvSFeQKWzdRWprYk6eUAYrg4umOAc/K9mi/QH2OmB7O0yqCjlCRPzFCuh0xJAjsbo5a3A/P2zHvjtQkqhg9YK36+nGab5NdMtifBREhnK1HnOImUVdjiI9E//F4rTjTgjwEZf34u5dwVvcmL7pW+JAQYBtAksbfjZEDPZbY4use1x9Ew7gaSjO7tqrF1cwJn+GowlAr8CVLAOvtTnt539sHzKt3k2b0qtIHJb5v9QjscgQwKHanvwZACeAZS7ZjQW7F4RtL6URewaGoOLZfuRiCeuoWVTMG0CAmU1p3oSkeKr+60wMeiNkk3ABrin9W7MsBRASzJn/08G9sRYPPgXJFrR/ZEZHFj7oGl2wQPpoDkVTAw4IGirQWRQZJVVa14Qge1TP9KHPC3Ua6ZZdGpfuFT680i+69rVx5Y7KclThfdWVZhdFfTX2U2COUmXGBuBEaD1pSmRBwtYPvjBtFAbyUKMAHqaL4Rni8jc5mYNrD7HtCVqDkztxvx9Iuym8zR9OiWX/apmKgYoE6RNOdFyx4tNJTPaXA48MI0BKtD8PLHsaPXSOMdzbYMNCmDqmDBfxUKIisY0ohOYz9WTo/0rBpFCVOVBuMs11n4y19edMAw1dxz4kla2ehEK6sVOht20fSqYjvBehZh5l7zOdQYtE+l+BixduPgJ6Urg2bMM86DfOImJt5k5f2uhtNmG4pUB2LrtKQNnNKOaXCrzt8R4QkUYj3HlXbIigc+fgUR1DlMpjVBeauYEPTxk/GlpC6IrDsgzjtvRktIzIz8wP+6Ea4R4UZf+CsCFmZqd9ZxVx0xGZ9ipq8o1AhYcxk0obTqjmqxCbx82z4tIdGcvQtLHP7HUTspaWuTngBue8ZDVl5ZkwVZQyZbhL2BAQ7FtaJRL4bz9Lhv29Pt3Phe9Hei4B+tuVA16gV+3xZd7lt0i3ZSirkKJbsqj2a9lofXmKnjuVGvqv7F14P1fbHI4jjIEW9W0CmsyN3DkXdj0GVEkr1BZ70CDQQJhGQOgDO3UeBuW1XtdOLtnQO7deRUL3PwNorAIRpvN4mM5+dc8s6HaeRqdvv1sMtcEVwLEBj4v4IQknHwSJgL/7bglsBEGlKEDHyk6JLfO4/sCOfM+iqvj435NX43cRoneXx7Rs9JzZvEcqe+Qs+F9oRNM1dmyHGMTejU7evhJRzdXMiqY0XTSMjNPgF3ggb0WVFRA+ScpRJqdK0SD8C5EycBS987yc/qBndBo+k1lOyecG65zR6DtobfZx0TDJJIK5ljO7P/Q5EL3lYT+s86B1QNTA6aJTFrQfcUGfpj6kjl7; IBCOOKIE09=a7d0bc7a5184ce8af667176520d86f1d8eb8cee0e460961e58d2c990140eac3272e7d7f380da2016058f6096f099323bOIRq3DN5Zlu6AtqkdsqFlsNU/ObyNSTEBcYg7Jk08dSokipYFqJNGKcJJmhS9P5J; ak_bmsc=D6FC48D7D4D692A906E61AC06A5B3E98686747549A5E0000E8DE015903DBCF57~plY2qu0dGEZ/LwhsXuDut84Ti693gfAgkW4MgUayLuJefFayAtWLzmSa3zLgt1ehjuliKF1ps7vKRkNLWCtD3fvYDka8BAX/lqRbxCbggjqfwQf3EKBVRQBsmU+jFYtmvqtdszWz0xYRQXlsTs5+hHw1jOtuq7/MBRAmwXlyKavkcM392MGMW2oOVWaOLLZFbcigL8xFXLUO50d/eHLAOj9jrSAxxi5+b0YYmcTVSj23s=; TLCookie=RAND86bR7IaKvxq8oUbruwuTyitXDSCk6D8q_27042017123609; bmuid=3EDA850C-404B-45BF-9246-BAF93610FEFD; bc_historyCsId=b0c1de922b4411e780215673f91b540c; bc_sessionId=858b1289-0039-4f2a-9fd6-484be69f475f; bc_sessionIdPerSession=858b1289-0039-4f2a-9fd6-484be69f475f; bcbd=1493295971298_858b1289-0039-4f2a-9fd6-484be69f475f; LSESSIONID=jLd1pqYZ6okkdCyGLx0g0T0No%2FmSpX3aU0CzEXavFtPX08UvNMN04sA%3D; brbk0=1757; prefshash=Version-252865%2CNksQ0nSmhODaM8gyRq9%2FlQ%3D%3D%2F9hUxfeFGlVRDi44rnHeb8WhVnd7LmBH76R45BqqbI7JUqtW3XsFEtiz3LwI7PAj8%2FLWCadl5qehfszrrlC1yPMGs%2FbM0Bo7TWye75onnHcK3cWwpE9fngQn%2FoPdZL%2FtRJRewoE%2BCqeAU5oJPoaX9aQ%2FulRKa30TWgIxOL2qTPk%3D; IBCOOKIE07=1493296079258|; ___so20414=eyJsc2giOjE5MTYwMzE0NjQsInNkIjpudWxsLCJlIjp7Im4iOjMsImEiOlt7IjE4Ijp0cnVlLCJzciI6Imh0dHBzOi8vc2VjdXJlLmJhbmtvZnNjb3RsYW5kLmNvLnVrL2Zhdmljb24uaWNvIn0sIjE4Il0sInJpZCI6MC4xMTIwODU5MTkyMjA1MjM0N30sIm4iOjksInIiOltdLCJ1IjoiT0RFd01EZGpPRFEyWm1ZMU5HTTVZV0UwTW1FMlpXSmhaR1k1TkdNME1EazBaVEEwTjJNNE9HSTJObU5oWW1Fd1pXWTJOakV3TWpobU5qbGtPRFl5WmpjNE1qTmlaV1ppWkRNM1pXRmxNVE5tTURGaU9UWm1OVFUxTTJVME5qUXhNR1l4WVdSbFl6azJZelE1WlRabU5HSXhZek5pWlRjM01EaGpNbVkxWWpRd05UZGtPVFV5WTJFM00yRXlNR1UyWVdJNE1HVTBaVEV6T1RjME9XVmlPR1F3TUdGaVltWm1aVEV5T0dSaU1tVmhZbVU1TVRJeFptRTNZV0poTm1ZNE9EQmlNakF6TURBeFpHSTJNREptWWpFek9HRTNNbUl5Wm1GalkyRmpObUl3TldFME1tSTNZVFk0T0dOak16QmtPR1EzTW1RM01qYzBZelpsTlRkalpqRm1NVGhpTnpSa1lURmhaamsxWlRReU1qaG1NVFV5WmpRMFpXVXhNVE5rWVRJeE4ySmpNR0psWlRCaVpEUXdOMk5rTVRsbVpUSTJOR05sTWprellUSTROemsxTUdRM05qazBPR1JrTnpOaU1tVXpOVFpsTkRaaU9XRXdOemc1TmpFM09XRXhNakprWmpBMVkyVmhNV013WkRBMVpHRmhOekptT0RRMk56WTBOR0ZoWkdWa056YzJOVFEzWVRZMU5EbGhZamN3T1RNek56Um1abUU0WW1abVpERTRZelpqWVROaU5qazJOakF6WmpabE9XVmhZemRsT1RBMk5qTTJNRGRoWVRRNE9UaGlNMll3Tm1Sa01tTXhaR0ZtT1dNNVl6Um1NbU5rTmprNFpqWmlZV1k1TWpSak56VmpNall6TXpsallXVTFZV1EyTldFeU5qY3dNbVI4TVh4bWNtMU1iMmRwYmc9PSIsImgiOiI5NWM5OGNiMzJlNDNjNTQyM2U4NmY5ZWI1YzViMTZiNmYyMzc0ZjY4ZjBiN2MxMTAxNGRkMTgxNzk2NmRhMzRhIn0%3D; WT_FPC=id=c2c75801-9e0d-438d-bb5a-51b920682bf6:lv=1493292484273:ss=1493291223694; utag_main=v_id:01541ab91fd0001839f717b0782f0506d002006500bd0$_sn:37$_ss:0$_st:1493297884277$_pn:19%3Bexp-session$ses_id:1493294822920%3Bexp-session$EPLI:%7B%22JourneyName%22%3A%22Log%20On%22%2C%22JourneyStep%22%3A2%7D%3Bexp-1493299684270; ADRUM=s=1493296084285&r=https%3A%2F%2Fsecure.bankofscotland.co.uk%2Fpersonal%2Fa%2Flogon%2Fentermemorableinformation.jsp%3F0
+# Host:secure.bankofscotland.co.uk
+# Origin:https://secure.bankofscotland.co.uk
+# Pragma:no-cache
+# Referer:https://secure.bankofscotland.co.uk/personal/a/logon/entermemorableinformation.jsp
+# Upgrade-Insecure-Requests:1
+# User-Agent:Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36
+#
+# frmentermemorableinformation1:strEnterMemorableInformation_memInfo1:&nbsp;i
+# frmentermemorableinformation1:strEnterMemorableInformation_memInfo2:&nbsp;t
+# frmentermemorableinformation1:strEnterMemorableInformation_memInfo3:&nbsp;2
+# frmentermemorableinformation1:frmentermemorableinformation1
+# submitToken:9108934
+# hasJS:true
+# frmentermemorableinformation1:btnContinue:null
